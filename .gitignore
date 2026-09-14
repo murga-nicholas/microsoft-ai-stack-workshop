@@ -1,0 +1,48 @@
+# --- Secrets --------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Python environments and build artifacts ------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# --- Tool caches ----------------------------------------------------------
+.pytest_cache/
+# pytest --basetemp roots, including ones sandboxed tools leave behind.
+.pytest_tmp*/
+.pytest-tmp*/
+# Shared pytest roots and coverage data from sandboxed tool runs.
+.pytest_shared*/
+.coverage-shared
+# Temporary AutoGen run directories created at the repository root.
+/autogen-*/
+.ruff_cache/
+.mypy_cache/
+.uv-cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# --- Demo-generated runtime state -----------------------------------------
+# The Harness demo writes its disposable workspace here.
+.msai_workspace/
+# The workflow demo writes file-backed checkpoints here.
+.msai_checkpoints/
+
+# --- Editors and OS -------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+# Microsoft Office lock files exist only while a document is open.
+~$*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

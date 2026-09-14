@@ -1,0 +1,8 @@
+# One line ending for every contributor, whatever their OS.
+* text=auto eol=lf
+
+# Binary artefacts are never normalised.
+*.pptx binary
+*.png binary
+*.jpeg binary
+*.jpg binary

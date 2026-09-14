@@ -1,0 +1,1208 @@
+{
+  "autogen": {
+    "implementation": "autogen",
+    "framework_version": "0.7.5",
+    "scenario_id": "support-pilot-v1",
+    "participants": [
+      {
+        "name": "SolutionArchitect",
+        "provider": "offline",
+        "model": "autogen-replay"
+      },
+      {
+        "name": "RiskReviewer",
+        "provider": "offline",
+        "model": "autogen-replay"
+      }
+    ],
+    "turns": [
+      {
+        "index": 0,
+        "speaker": "SolutionArchitect",
+        "provider": "offline",
+        "model": "autogen-replay",
+        "text": "{\"scope\": \"Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.\", \"milestones\": [{\"week\": 1, \"title\": \"Readiness and identity\", \"exit_gate\": \"Scoped RBAC calls succeed; unauthorised calls are denied\"}, {\"week\": 2, \"title\": \"One agent, one tool\", \"exit_gate\": \"Tool call succeeds on real data\"}, {\"week\": 3, \"title\": \"Retrieval grounding\", \"exit_gate\": \"Answers cite a source document\"}, {\"week\": 4, \"title\": \"Approval workflow\", \"exit_gate\": \"No action before approval, including after a restart\"}, {\"week\": 5, \"title\": \"Telemetry and cost\", \"exit_gate\": \"Per-run tokens and latency shown\"}, {\"week\": 6, \"title\": \"Evaluation and handover\", \"exit_gate\": \"Evaluation suite passes\"}], \"cost\": {\"weeks\": 6, \"staffing\": {\"solution-architect\": 7200, \"python-engineer\": 11400}, \"staffing_total\": 18600, \"platform_total\": 1080, \"total\": 19680, \"budget\": 25000, \"within_budget\": true, \"headroom\": 5320}, \"cited_sections\": [\"agent-framework-overview\"]}",
+        "source_event": "TextMessage",
+        "usage": {
+          "input_tokens": 206,
+          "output_tokens": 133
+        }
+      },
+      {
+        "index": 1,
+        "speaker": "RiskReviewer",
+        "provider": "offline",
+        "model": "autogen-replay",
+        "text": "The deterministic cost and cited section are checked. APPROVE.",
+        "source_event": "TextMessage",
+        "usage": {
+          "input_tokens": 330,
+          "output_tokens": 9
+        }
+      }
+    ],
+    "proposal": {
+      "scope": "Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.",
+      "milestones": [
+        {
+          "week": 1,
+          "title": "Readiness and identity",
+          "exit_gate": "Scoped RBAC calls succeed; unauthorised calls are denied"
+        },
+        {
+          "week": 2,
+          "title": "One agent, one tool",
+          "exit_gate": "Tool call succeeds on real data"
+        },
+        {
+          "week": 3,
+          "title": "Retrieval grounding",
+          "exit_gate": "Answers cite a source document"
+        },
+        {
+          "week": 4,
+          "title": "Approval workflow",
+          "exit_gate": "No action before approval, including after a restart"
+        },
+        {
+          "week": 5,
+          "title": "Telemetry and cost",
+          "exit_gate": "Per-run tokens and latency shown"
+        },
+        {
+          "week": 6,
+          "title": "Evaluation and handover",
+          "exit_gate": "Evaluation suite passes"
+        }
+      ],
+      "cost": {
+        "weeks": 6,
+        "staffing": {
+          "solution-architect": 7200,
+          "python-engineer": 11400
+        },
+        "staffing_total": 18600,
+        "platform_total": 1080,
+        "total": 19680,
+        "budget": 25000,
+        "within_budget": true,
+        "headroom": 5320
+      },
+      "cited_sections": [
+        "agent-framework-overview"
+      ]
+    },
+    "cost": {
+      "weeks": 6,
+      "staffing": {
+        "solution-architect": 7200,
+        "python-engineer": 11400
+      },
+      "staffing_total": 18600,
+      "platform_total": 1080,
+      "total": 19680,
+      "budget": 25000,
+      "within_budget": true,
+      "headroom": 5320
+    },
+    "approval": {
+      "request_id": "approval::support-pilot-v1",
+      "state": "approved",
+      "decided_by": "workshop-operator",
+      "storage": "pending-approval.json"
+    },
+    "recovery": {
+      "run_directory": ".msai_checkpoints/autogen-n0iui1hg",
+      "parent_pid": 13588,
+      "resume_pid": 24288,
+      "second_resume_pid": 19996,
+      "files_read": [
+        ".msai_checkpoints/autogen-n0iui1hg/run.json",
+        ".msai_checkpoints/autogen-n0iui1hg/team-state.json",
+        ".msai_checkpoints/autogen-n0iui1hg/pending-approval.json",
+        "data/microsoft_ai_stack_notes.md",
+        ".msai_checkpoints/autogen-n0iui1hg/events.sqlite3"
+      ],
+      "second_resume_files_read": [
+        ".msai_checkpoints/autogen-n0iui1hg/run.json",
+        ".msai_checkpoints/autogen-n0iui1hg/team-state.json",
+        ".msai_checkpoints/autogen-n0iui1hg/pending-approval.json",
+        "data/microsoft_ai_stack_notes.md",
+        ".msai_checkpoints/autogen-n0iui1hg/events.sqlite3"
+      ],
+      "checkpoint_id": "1be42cbdfa25f12b6a4863914eaa50222f140f3f2e2896dfa1bc5aa59ec4e56f",
+      "restored": true,
+      "state_read_from_disk": true,
+      "action_count": 1,
+      "second_resume_action_count": 0
+    },
+    "actions": [
+      {
+        "name": "accept_proposal",
+        "kind": "simulated business action",
+        "idempotency_key": "accept::support-pilot-v1",
+        "outcome": "accepted::support-pilot-v1"
+      }
+    ],
+    "events": [
+      {
+        "sequence": 1,
+        "name": "gate_reached",
+        "pid": 13588,
+        "details": {}
+      },
+      {
+        "sequence": 2,
+        "name": "approval_recorded",
+        "pid": 24288,
+        "details": {
+          "approved": true
+        }
+      },
+      {
+        "sequence": 3,
+        "name": "action_executed",
+        "pid": 24288,
+        "details": {
+          "name": "accept_proposal",
+          "kind": "simulated business action",
+          "idempotency_key": "accept::support-pilot-v1",
+          "outcome": "accepted::support-pilot-v1"
+        }
+      },
+      {
+        "sequence": 4,
+        "name": "approval_recorded",
+        "pid": 19996,
+        "details": {
+          "approved": true
+        }
+      }
+    ],
+    "checks": {
+      "schema_valid": true,
+      "sources_valid": true,
+      "within_budget": true,
+      "cost_matches_pricing": true,
+      "paused_for_approval": true,
+      "no_action_before_approval": true,
+      "one_action_after_resume": true,
+      "survived_process_boundary": true,
+      "idempotent_second_resume": true,
+      "acceptable": true
+    },
+    "application_owned": [
+      "save_pending_approval",
+      "save_team_state",
+      "resume_autogen",
+      "apply_approval",
+      "scenario.EventStore.execute_action",
+      "scenario.EventStore.append"
+    ],
+    "tool_calling": "not exercised: no ToolCallExecutionEvent was recorded",
+    "stop_reason": "Text 'APPROVE' mentioned"
+  },
+  "agent-framework": {
+    "implementation": "agent-framework",
+    "framework_version": "1.18.0",
+    "scenario_id": "support-pilot-v1",
+    "participants": [
+      {
+        "name": "SolutionArchitect",
+        "provider": "offline",
+        "model": "scripted-offline-1"
+      },
+      {
+        "name": "RiskReviewer",
+        "provider": "offline",
+        "model": "scripted-offline-1"
+      }
+    ],
+    "turns": [
+      {
+        "index": 0,
+        "speaker": "SolutionArchitect",
+        "provider": "offline",
+        "model": "scripted-offline-1",
+        "text": "{\"scope\": \"Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.\", \"milestones\": [{\"week\": 1, \"title\": \"Readiness and identity\", \"exit_gate\": \"Scoped RBAC calls succeed; unauthorised calls are denied\"}, {\"week\": 2, \"title\": \"One agent, one tool\", \"exit_gate\": \"Tool call succeeds on real data\"}, {\"week\": 3, \"title\": \"Retrieval grounding\", \"exit_gate\": \"Answers cite a source document\"}, {\"week\": 4, \"title\": \"Approval workflow\", \"exit_gate\": \"No action before approval, including after a restart\"}, {\"week\": 5, \"title\": \"Telemetry and cost\", \"exit_gate\": \"Per-run tokens and latency shown\"}, {\"week\": 6, \"title\": \"Evaluation and handover\", \"exit_gate\": \"Evaluation suite passes\"}], \"cost\": {\"weeks\": 6, \"staffing\": {\"solution-architect\": 7200, \"python-engineer\": 11400}, \"staffing_total\": 18600, \"platform_total\": 1080, \"total\": 19680, \"budget\": 25000, \"within_budget\": true, \"headroom\": 5320}, \"cited_sections\": [\"agent-framework-overview\"]}",
+        "source_event": "AgentResponseUpdate",
+        "usage": null
+      }
+    ],
+    "cost": {
+      "weeks": 6,
+      "staffing": {
+        "solution-architect": 7200,
+        "python-engineer": 11400
+      },
+      "staffing_total": 18600,
+      "platform_total": 1080,
+      "total": 19680,
+      "budget": 25000,
+      "within_budget": true,
+      "headroom": 5320
+    },
+    "proposal": {
+      "scope": "Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.",
+      "milestones": [
+        {
+          "week": 1,
+          "title": "Readiness and identity",
+          "exit_gate": "Scoped RBAC calls succeed; unauthorised calls are denied"
+        },
+        {
+          "week": 2,
+          "title": "One agent, one tool",
+          "exit_gate": "Tool call succeeds on real data"
+        },
+        {
+          "week": 3,
+          "title": "Retrieval grounding",
+          "exit_gate": "Answers cite a source document"
+        },
+        {
+          "week": 4,
+          "title": "Approval workflow",
+          "exit_gate": "No action before approval, including after a restart"
+        },
+        {
+          "week": 5,
+          "title": "Telemetry and cost",
+          "exit_gate": "Per-run tokens and latency shown"
+        },
+        {
+          "week": 6,
+          "title": "Evaluation and handover",
+          "exit_gate": "Evaluation suite passes"
+        }
+      ],
+      "cost": {
+        "weeks": 6,
+        "staffing": {
+          "solution-architect": 7200,
+          "python-engineer": 11400
+        },
+        "staffing_total": 18600,
+        "platform_total": 1080,
+        "total": 19680,
+        "budget": 25000,
+        "within_budget": true,
+        "headroom": 5320
+      },
+      "cited_sections": [
+        "agent-framework-overview"
+      ]
+    },
+    "events": [
+      {
+        "sequence": 1,
+        "name": "gate_reached",
+        "pid": 13588,
+        "details": {}
+      },
+      {
+        "sequence": 2,
+        "name": "approval_recorded",
+        "pid": 11968,
+        "details": {
+          "approved": true
+        }
+      },
+      {
+        "sequence": 3,
+        "name": "action_executed",
+        "pid": 11968,
+        "details": {
+          "name": "accept_proposal",
+          "kind": "simulated business action",
+          "idempotency_key": "accept::support-pilot-v1",
+          "outcome": "accepted::support-pilot-v1"
+        }
+      },
+      {
+        "sequence": 4,
+        "name": "approval_recorded",
+        "pid": 10376,
+        "details": {
+          "approved": true
+        }
+      }
+    ],
+    "approval": {
+      "state": "approved",
+      "decided_by": "workshop-operator",
+      "storage": "pending_request_info_events in workflow checkpoint",
+      "acceptance_failures": []
+    },
+    "recovery": {
+      "run_directory": ".msai_checkpoints/agent-framework-zuy8j2kg",
+      "parent_pid": 13588,
+      "resume_pid": 11968,
+      "second_resume_pid": 10376,
+      "files_read": [
+        ".msai_checkpoints/agent-framework-zuy8j2kg/run.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/18d40922-8493-4f03-9e89-20a4c03e6929.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/4e08dd9b-760f-47ea-a8fa-ae66245b4e24.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7f115783-9609-4920-a1f5-b44afc44fb1d.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/c130c930-a272-459b-b6fc-bb6637c867e6.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/f71201a3-1a53-45f5-99db-67be78cda55d.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/events.sqlite3"
+      ],
+      "second_resume_files_read": [
+        ".msai_checkpoints/agent-framework-zuy8j2kg/run.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/18d40922-8493-4f03-9e89-20a4c03e6929.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/4e08dd9b-760f-47ea-a8fa-ae66245b4e24.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7e64ef1a-88df-480e-b004-24e79b8ec0b0.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7f115783-9609-4920-a1f5-b44afc44fb1d.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/80998f15-c00f-4740-9363-51b478ccebb3.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/8e63d3bb-7a16-4b55-9708-79530ecbc112.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/bad1ff49-5b65-4f38-838f-9ff93024a4d1.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/be9a5ce3-064b-4741-b9e9-25bb5269ba1b.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/c130c930-a272-459b-b6fc-bb6637c867e6.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/f71201a3-1a53-45f5-99db-67be78cda55d.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/events.sqlite3"
+      ],
+      "checkpoint_id": "f71201a3-1a53-45f5-99db-67be78cda55d",
+      "restored": true,
+      "state_read_from_disk": true,
+      "action_count": 1,
+      "second_resume_action_count": 0
+    },
+    "actions": [
+      {
+        "name": "accept_proposal",
+        "kind": "simulated business action",
+        "idempotency_key": "accept::support-pilot-v1",
+        "outcome": "accepted::support-pilot-v1"
+      }
+    ],
+    "checks": {
+      "schema_valid": true,
+      "sources_valid": true,
+      "within_budget": true,
+      "cost_matches_pricing": true,
+      "paused_for_approval": true,
+      "no_action_before_approval": true,
+      "one_action_after_resume": true,
+      "survived_process_boundary": true,
+      "idempotent_second_resume": true,
+      "acceptable": true
+    },
+    "application_owned": [
+      "human decision",
+      "resume process launch",
+      "idempotency"
+    ],
+    "tool_calling": "exercised",
+    "stop_reason": "resumed"
+  },
+  "group-chat-agent-framework": {
+    "implementation": "agent-framework",
+    "framework_version": "1.18.0",
+    "scenario_id": "support-pilot-v1",
+    "participants": [
+      {
+        "name": "SolutionArchitect",
+        "provider": "offline",
+        "model": "scripted-offline-1"
+      },
+      {
+        "name": "RiskReviewer",
+        "provider": "offline",
+        "model": "scripted-offline-1"
+      }
+    ],
+    "turns": [
+      {
+        "index": 0,
+        "speaker": "SolutionArchitect",
+        "provider": "offline",
+        "model": "scripted-offline-1",
+        "text": "{\"scope\": \"Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.\", \"milestones\": [{\"week\": 1, \"title\": \"Readiness and identity\", \"exit_gate\": \"Scoped RBAC calls succeed; unauthorised calls are denied\"}, {\"week\": 2, \"title\": \"One agent, one tool\", \"exit_gate\": \"Tool call succeeds on real data\"}, {\"week\": 3, \"title\": \"Retrieval grounding\", \"exit_gate\": \"Answers cite a source document\"}, {\"week\": 4, \"title\": \"Approval workflow\", \"exit_gate\": \"No action before approval, including after a restart\"}, {\"week\": 5, \"title\": \"Telemetry and cost\", \"exit_gate\": \"Per-run tokens and latency shown\"}, {\"week\": 6, \"title\": \"Evaluation and handover\", \"exit_gate\": \"Evaluation suite passes\"}], \"cost\": {\"weeks\": 6, \"staffing\": {\"solution-architect\": 7200, \"python-engineer\": 11400}, \"staffing_total\": 18600, \"platform_total\": 1080, \"total\": 19680, \"budget\": 25000, \"within_budget\": true, \"headroom\": 5320}, \"cited_sections\": [\"agent-framework-overview\"]}",
+        "source_event": "AgentResponseUpdate",
+        "usage": null
+      }
+    ],
+    "cost": {
+      "weeks": 6,
+      "staffing": {
+        "solution-architect": 7200,
+        "python-engineer": 11400
+      },
+      "staffing_total": 18600,
+      "platform_total": 1080,
+      "total": 19680,
+      "budget": 25000,
+      "within_budget": true,
+      "headroom": 5320
+    },
+    "proposal": {
+      "scope": "Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.",
+      "milestones": [
+        {
+          "week": 1,
+          "title": "Readiness and identity",
+          "exit_gate": "Scoped RBAC calls succeed; unauthorised calls are denied"
+        },
+        {
+          "week": 2,
+          "title": "One agent, one tool",
+          "exit_gate": "Tool call succeeds on real data"
+        },
+        {
+          "week": 3,
+          "title": "Retrieval grounding",
+          "exit_gate": "Answers cite a source document"
+        },
+        {
+          "week": 4,
+          "title": "Approval workflow",
+          "exit_gate": "No action before approval, including after a restart"
+        },
+        {
+          "week": 5,
+          "title": "Telemetry and cost",
+          "exit_gate": "Per-run tokens and latency shown"
+        },
+        {
+          "week": 6,
+          "title": "Evaluation and handover",
+          "exit_gate": "Evaluation suite passes"
+        }
+      ],
+      "cost": {
+        "weeks": 6,
+        "staffing": {
+          "solution-architect": 7200,
+          "python-engineer": 11400
+        },
+        "staffing_total": 18600,
+        "platform_total": 1080,
+        "total": 19680,
+        "budget": 25000,
+        "within_budget": true,
+        "headroom": 5320
+      },
+      "cited_sections": [
+        "agent-framework-overview"
+      ]
+    },
+    "events": [
+      {
+        "sequence": 1,
+        "name": "gate_reached",
+        "pid": 13588,
+        "details": {}
+      },
+      {
+        "sequence": 2,
+        "name": "approval_recorded",
+        "pid": 11968,
+        "details": {
+          "approved": true
+        }
+      },
+      {
+        "sequence": 3,
+        "name": "action_executed",
+        "pid": 11968,
+        "details": {
+          "name": "accept_proposal",
+          "kind": "simulated business action",
+          "idempotency_key": "accept::support-pilot-v1",
+          "outcome": "accepted::support-pilot-v1"
+        }
+      },
+      {
+        "sequence": 4,
+        "name": "approval_recorded",
+        "pid": 10376,
+        "details": {
+          "approved": true
+        }
+      }
+    ],
+    "approval": {
+      "state": "approved",
+      "decided_by": "workshop-operator",
+      "storage": "pending_request_info_events in workflow checkpoint",
+      "acceptance_failures": []
+    },
+    "recovery": {
+      "run_directory": ".msai_checkpoints/agent-framework-zuy8j2kg",
+      "parent_pid": 13588,
+      "resume_pid": 11968,
+      "second_resume_pid": 10376,
+      "files_read": [
+        ".msai_checkpoints/agent-framework-zuy8j2kg/run.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/18d40922-8493-4f03-9e89-20a4c03e6929.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/4e08dd9b-760f-47ea-a8fa-ae66245b4e24.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7f115783-9609-4920-a1f5-b44afc44fb1d.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/c130c930-a272-459b-b6fc-bb6637c867e6.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/f71201a3-1a53-45f5-99db-67be78cda55d.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/events.sqlite3"
+      ],
+      "second_resume_files_read": [
+        ".msai_checkpoints/agent-framework-zuy8j2kg/run.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/18d40922-8493-4f03-9e89-20a4c03e6929.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/4e08dd9b-760f-47ea-a8fa-ae66245b4e24.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7e64ef1a-88df-480e-b004-24e79b8ec0b0.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7f115783-9609-4920-a1f5-b44afc44fb1d.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/80998f15-c00f-4740-9363-51b478ccebb3.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/8e63d3bb-7a16-4b55-9708-79530ecbc112.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/bad1ff49-5b65-4f38-838f-9ff93024a4d1.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/be9a5ce3-064b-4741-b9e9-25bb5269ba1b.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/c130c930-a272-459b-b6fc-bb6637c867e6.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/f71201a3-1a53-45f5-99db-67be78cda55d.json",
+        ".msai_checkpoints/agent-framework-zuy8j2kg/events.sqlite3"
+      ],
+      "checkpoint_id": "f71201a3-1a53-45f5-99db-67be78cda55d",
+      "restored": true,
+      "state_read_from_disk": true,
+      "action_count": 1,
+      "second_resume_action_count": 0
+    },
+    "actions": [
+      {
+        "name": "accept_proposal",
+        "kind": "simulated business action",
+        "idempotency_key": "accept::support-pilot-v1",
+        "outcome": "accepted::support-pilot-v1"
+      }
+    ],
+    "checks": {
+      "schema_valid": true,
+      "sources_valid": true,
+      "within_budget": true,
+      "cost_matches_pricing": true,
+      "paused_for_approval": true,
+      "no_action_before_approval": true,
+      "one_action_after_resume": true,
+      "survived_process_boundary": true,
+      "idempotent_second_resume": true,
+      "acceptable": true
+    },
+    "application_owned": [
+      "human decision",
+      "resume process launch",
+      "idempotency"
+    ],
+    "tool_calling": "exercised",
+    "stop_reason": "resumed"
+  },
+  "group-chat": {
+    "comparison": {
+      "responsibility_matrix": [
+        {
+          "concern": "pending approval record",
+          "autogen": "application: msai_demo.autogen_demo.save_pending_approval",
+          "agent-framework": "framework: agent_framework.WorkflowCheckpoint.pending_request_info_events"
+        },
+        {
+          "concern": "durable state",
+          "autogen": "application: msai_demo.autogen_demo.save_team_state",
+          "agent-framework": "framework: agent_framework.FileCheckpointStorage"
+        },
+        {
+          "concern": "restart routing",
+          "autogen": "application: msai_demo.autogen_demo.resume_autogen",
+          "agent-framework": "application: msai_demo.group_chat_demo.resume_agent_framework"
+        },
+        {
+          "concern": "action gate",
+          "autogen": "application: msai_demo.autogen_demo.apply_approval",
+          "agent-framework": "framework: agent_framework.tool(approval_mode=\"always_require\")"
+        },
+        {
+          "concern": "idempotency",
+          "autogen": "application: msai_demo.scenario.EventStore.execute_action",
+          "agent-framework": "application: msai_demo.scenario.EventStore.execute_action"
+        },
+        {
+          "concern": "audit event log",
+          "autogen": "application: msai_demo.scenario.EventStore.append",
+          "agent-framework": "application: msai_demo.scenario.EventStore.append"
+        }
+      ],
+      "checks": {
+        "autogen": {
+          "schema_valid": true,
+          "sources_valid": true,
+          "within_budget": true,
+          "cost_matches_pricing": true,
+          "paused_for_approval": true,
+          "no_action_before_approval": true,
+          "one_action_after_resume": true,
+          "survived_process_boundary": true,
+          "idempotent_second_resume": true,
+          "acceptable": true
+        },
+        "agent-framework": {
+          "schema_valid": true,
+          "sources_valid": true,
+          "within_budget": true,
+          "cost_matches_pricing": true,
+          "paused_for_approval": true,
+          "no_action_before_approval": true,
+          "one_action_after_resume": true,
+          "survived_process_boundary": true,
+          "idempotent_second_resume": true,
+          "acceptable": true
+        }
+      },
+      "recovery": {
+        "autogen": {
+          "run_directory": ".msai_checkpoints/autogen-n0iui1hg",
+          "parent_pid": 13588,
+          "resume_pid": 24288,
+          "second_resume_pid": 19996,
+          "files_read": [
+            ".msai_checkpoints/autogen-n0iui1hg/run.json",
+            ".msai_checkpoints/autogen-n0iui1hg/team-state.json",
+            ".msai_checkpoints/autogen-n0iui1hg/pending-approval.json",
+            "data/microsoft_ai_stack_notes.md",
+            ".msai_checkpoints/autogen-n0iui1hg/events.sqlite3"
+          ],
+          "second_resume_files_read": [
+            ".msai_checkpoints/autogen-n0iui1hg/run.json",
+            ".msai_checkpoints/autogen-n0iui1hg/team-state.json",
+            ".msai_checkpoints/autogen-n0iui1hg/pending-approval.json",
+            "data/microsoft_ai_stack_notes.md",
+            ".msai_checkpoints/autogen-n0iui1hg/events.sqlite3"
+          ],
+          "checkpoint_id": "1be42cbdfa25f12b6a4863914eaa50222f140f3f2e2896dfa1bc5aa59ec4e56f",
+          "restored": true,
+          "state_read_from_disk": true,
+          "action_count": 1,
+          "second_resume_action_count": 0
+        },
+        "agent-framework": {
+          "run_directory": ".msai_checkpoints/agent-framework-zuy8j2kg",
+          "parent_pid": 13588,
+          "resume_pid": 11968,
+          "second_resume_pid": 10376,
+          "files_read": [
+            ".msai_checkpoints/agent-framework-zuy8j2kg/run.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/18d40922-8493-4f03-9e89-20a4c03e6929.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/4e08dd9b-760f-47ea-a8fa-ae66245b4e24.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7f115783-9609-4920-a1f5-b44afc44fb1d.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/c130c930-a272-459b-b6fc-bb6637c867e6.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/f71201a3-1a53-45f5-99db-67be78cda55d.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/events.sqlite3"
+          ],
+          "second_resume_files_read": [
+            ".msai_checkpoints/agent-framework-zuy8j2kg/run.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/18d40922-8493-4f03-9e89-20a4c03e6929.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/4e08dd9b-760f-47ea-a8fa-ae66245b4e24.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7e64ef1a-88df-480e-b004-24e79b8ec0b0.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/7f115783-9609-4920-a1f5-b44afc44fb1d.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/80998f15-c00f-4740-9363-51b478ccebb3.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/8e63d3bb-7a16-4b55-9708-79530ecbc112.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/bad1ff49-5b65-4f38-838f-9ff93024a4d1.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/be9a5ce3-064b-4741-b9e9-25bb5269ba1b.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/c130c930-a272-459b-b6fc-bb6637c867e6.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/checkpoints/f71201a3-1a53-45f5-99db-67be78cda55d.json",
+            ".msai_checkpoints/agent-framework-zuy8j2kg/events.sqlite3"
+          ],
+          "checkpoint_id": "f71201a3-1a53-45f5-99db-67be78cda55d",
+          "restored": true,
+          "state_read_from_disk": true,
+          "action_count": 1,
+          "second_resume_action_count": 0
+        }
+      },
+      "verdict": "Agent Framework checkpoints include pending approvals and its tool API gates execution. Both lanes use application code to launch recovery, record decisions and enforce idempotency."
+    }
+  },
+  "evaluation": {
+    "mode": "local_execution",
+    "status": "ok",
+    "headline": "Evaluated 3 proposals; 1 failed quality gates.",
+    "scenario_id": "support-pilot-v1",
+    "cost": {
+      "weeks": 6,
+      "staffing": {
+        "solution-architect": 7200,
+        "python-engineer": 11400
+      },
+      "staffing_total": 18600,
+      "platform_total": 1080,
+      "total": 19680,
+      "budget": 25000,
+      "within_budget": true,
+      "headroom": 5320
+    },
+    "api_path": "azure.ai.evaluation.evaluate(data=..., evaluators=...)",
+    "sdk_metrics": {
+      "required_terms.passed": 1.0,
+      "source_sections.passed": 0.6666666666666666
+    },
+    "rows": [
+      {
+        "case": "costed-pilot",
+        "question": "Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.",
+        "response": "Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.\nA 6-week customer-support pilot costs 19680 USD against a 25000 USD budget. Human approval is required before acceptance. Source: agent-framework-overview",
+        "required_terms": {
+          "passed": true,
+          "missing": []
+        },
+        "source_sections": {
+          "passed": true,
+          "missing": []
+        },
+        "passed": true
+      },
+      {
+        "case": "approval-gate",
+        "question": "Explain the acceptance gate.",
+        "response": "Explain the acceptance gate.\nA 6-week customer-support pilot costs 19680 USD against a 25000 USD budget. Human approval is required before acceptance. Source: guardrails",
+        "required_terms": {
+          "passed": true,
+          "missing": []
+        },
+        "source_sections": {
+          "passed": true,
+          "missing": []
+        },
+        "passed": true
+      },
+      {
+        "case": "invented-source",
+        "question": "Explain the delivery proposal.",
+        "response": "Explain the delivery proposal.\nA 6-week customer-support pilot costs 19680 USD against a 25000 USD budget. Human approval is required before acceptance. Source: nonexistent-pilot-guarantee",
+        "required_terms": {
+          "passed": true,
+          "missing": []
+        },
+        "source_sections": {
+          "passed": false,
+          "missing": [
+            "nonexistent-pilot-guarantee"
+          ]
+        },
+        "passed": false
+      }
+    ],
+    "failed_cases": 1,
+    "suite_passed": false,
+    "intentional_failure": "invented-source cites a section absent from the corpus. An evaluation that only shows green is a dashboard, not a test.",
+    "limitation": "Term presence and citation existence do not prove that a source supports the answer or that the answer is correct.",
+    "cloud_submission": {
+      "requested_api": "AIProjectClient.evaluations",
+      "installed_api_note": "azure-ai-projects 2.6.0 exposes evaluation_rules, not an evaluations operation group. Do not call a nonexistent method.",
+      "verified_api": "AIProjectClient.get_openai_client().evals",
+      "steps": [
+        "Provision a Foundry project and grant the caller access.",
+        "Materialize these same rows with proposal_target outputs.",
+        "Upload JSONL with one {item: row} object per line.",
+        "Create an eval with evals.create(data_source_config=..., testing_criteria=...).",
+        "Submit the file with evals.runs.create(eval_id, data_source={type: jsonl, source: {type: file_id, id: ...}})."
+      ],
+      "local_sdk_recipe": "azure.ai.evaluation.evaluate(data='cases.jsonl', evaluators={...})",
+      "local_sdk_facts": "Installed evaluate accepts custom callable evaluators and does not require model configuration for deterministic checks. This runner selects its threaded CodeClient with the verified 1.18.5 compatibility kwargs _use_run_submitter_client=False and _use_pf_client=False. The default process batch workers previously timed out on this Windows environment.",
+      "judge": "A model-graded judge is a separate, paid, non-deterministic evaluation requiring a deployed model and resource access.",
+      "submitted": false
+    }
+  },
+  "foundry-guardrails": {
+    "mode": "local_contract",
+    "status": "ok",
+    "headline": "Evaluated 2 cases; blocks: 2 at tool_call.",
+    "scenario_id": "support-pilot-v1",
+    "scenario": "Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.",
+    "policy": [
+      {
+        "name": "Stop prompt attacks",
+        "risk": "prompt_injection",
+        "points": [
+          "user_input",
+          "tool_call",
+          "tool_response",
+          "output"
+        ],
+        "action": "block"
+      },
+      {
+        "name": "Keep budget",
+        "risk": "over_budget",
+        "points": [
+          "tool_call"
+        ],
+        "action": "block"
+      },
+      {
+        "name": "Require approval",
+        "risk": "approval_missing",
+        "points": [
+          "tool_call"
+        ],
+        "action": "block"
+      },
+      {
+        "name": "Require grounding",
+        "risk": "grounding_missing",
+        "points": [
+          "tool_call"
+        ],
+        "action": "block"
+      },
+      {
+        "name": "Mark untrusted tool content",
+        "risk": "untrusted_source",
+        "points": [
+          "tool_response"
+        ],
+        "action": "annotate"
+      },
+      {
+        "name": "Disclose estimates",
+        "risk": "illustrative_cost",
+        "points": [
+          "output"
+        ],
+        "action": "annotate"
+      }
+    ],
+    "intervention_points": [
+      {
+        "point": "user_input",
+        "preview": false
+      },
+      {
+        "point": "tool_call",
+        "preview": true
+      },
+      {
+        "point": "tool_response",
+        "preview": true
+      },
+      {
+        "point": "output",
+        "preview": false
+      }
+    ],
+    "cases": [
+      {
+        "case": "standard",
+        "cost": {
+          "weeks": 6,
+          "staffing": {
+            "solution-architect": 7200,
+            "python-engineer": 11400
+          },
+          "staffing_total": 18600,
+          "platform_total": 1080,
+          "total": 19680,
+          "budget": 25000,
+          "within_budget": true,
+          "headroom": 5320
+        },
+        "human_approval": false,
+        "signals": {
+          "user_input": [],
+          "tool_call": [
+            "approval_missing"
+          ],
+          "tool_response": [
+            "untrusted_source"
+          ],
+          "output": [
+            "illustrative_cost"
+          ]
+        },
+        "decisions": [
+          {
+            "point": "user_input",
+            "action": "allow",
+            "matched_controls": []
+          },
+          {
+            "point": "tool_call",
+            "action": "block",
+            "matched_controls": [
+              "Require approval"
+            ]
+          },
+          {
+            "point": "tool_response",
+            "action": "annotate",
+            "matched_controls": [
+              "Mark untrusted tool content"
+            ]
+          },
+          {
+            "point": "output",
+            "action": "annotate",
+            "matched_controls": [
+              "Disclose estimates"
+            ]
+          }
+        ],
+        "acceptance_failures": [
+          "No human approval recorded."
+        ],
+        "acceptable": false,
+        "blocked": true,
+        "accept_proposal_executed": false,
+        "receipt": null
+      },
+      {
+        "case": "over_budget",
+        "cost": {
+          "weeks": 6,
+          "staffing": {
+            "solution-architect": 14400,
+            "python-engineer": 11400,
+            "qa-engineer": 9000
+          },
+          "staffing_total": 34800,
+          "platform_total": 1080,
+          "total": 35880,
+          "budget": 25000,
+          "within_budget": false,
+          "headroom": -10880
+        },
+        "human_approval": false,
+        "signals": {
+          "user_input": [],
+          "tool_call": [
+            "approval_missing",
+            "over_budget"
+          ],
+          "tool_response": [
+            "untrusted_source"
+          ],
+          "output": [
+            "illustrative_cost"
+          ]
+        },
+        "decisions": [
+          {
+            "point": "user_input",
+            "action": "allow",
+            "matched_controls": []
+          },
+          {
+            "point": "tool_call",
+            "action": "block",
+            "matched_controls": [
+              "Keep budget",
+              "Require approval"
+            ]
+          },
+          {
+            "point": "tool_response",
+            "action": "annotate",
+            "matched_controls": [
+              "Mark untrusted tool content"
+            ]
+          },
+          {
+            "point": "output",
+            "action": "annotate",
+            "matched_controls": [
+              "Disclose estimates"
+            ]
+          }
+        ],
+        "acceptance_failures": [
+          "Over budget by 10880 USD.",
+          "No human approval recorded."
+        ],
+        "acceptable": false,
+        "blocked": true,
+        "accept_proposal_executed": false,
+        "receipt": null
+      }
+    ],
+    "content_safety_demo_contrast": "content_safety_demo classifies one prompt in application code. Foundry guardrails configure service interception at input, tool call, tool response and output.",
+    "enforcement_scope": "This local policy gate enforces budget and human approval; it does not claim Foundry supplies an over-budget detector. Tool-response and output signals are independent fixture examples, not output from a blocked tool invocation.",
+    "source": "https://learn.microsoft.com/en-us/azure/foundry/guardrails/guardrails-overview"
+  },
+  "otel": {
+    "mode": "local_execution",
+    "status": "ok",
+    "headline": "Captured invoke_agent -> chat -> execute_tool on the offline provider.",
+    "scenario_id": "support-pilot-v1",
+    "cost": {
+      "weeks": 6,
+      "staffing": {
+        "solution-architect": 7200,
+        "python-engineer": 11400
+      },
+      "staffing_total": 18600,
+      "platform_total": 1080,
+      "total": 19680,
+      "budget": 25000,
+      "within_budget": true,
+      "headroom": 5320
+    },
+    "spans": [
+      {
+        "name": "execute_tool price_support_pilot",
+        "span_id": "2b81d0288b35f193",
+        "parent_id": "85f1b29838016424",
+        "attributes": {
+          "gen_ai.operation.name": "execute_tool",
+          "gen_ai.tool.name": "price_support_pilot",
+          "gen_ai.tool.call.id": "offline-call-0",
+          "gen_ai.tool.type": "function",
+          "gen_ai.tool.description": "Compute the pilot cost without accepting any work."
+        }
+      },
+      {
+        "name": "chat scripted-offline-1",
+        "span_id": "85f1b29838016424",
+        "parent_id": "5c8d9fd2f4145582",
+        "attributes": {
+          "gen_ai.request.choice.count": 1,
+          "gen_ai.operation.name": "chat",
+          "gen_ai.request.model": "scripted-offline-1",
+          "gen_ai.provider.name": "offline",
+          "gen_ai.response.id": "offline-2",
+          "gen_ai.response.finish_reasons": "[\"stop\"]",
+          "gen_ai.response.model": "scripted-offline-1"
+        }
+      },
+      {
+        "name": "invoke_agent PilotArchitect",
+        "span_id": "5c8d9fd2f4145582",
+        "parent_id": null,
+        "attributes": {
+          "gen_ai.request.choice.count": 1,
+          "gen_ai.operation.name": "invoke_agent",
+          "gen_ai.agent.id": "9027613e-e8b8-4ee3-a754-1c787e3f6c3c",
+          "gen_ai.agent.name": "PilotArchitect",
+          "gen_ai.request.model": "scripted-offline-1",
+          "gen_ai.tool.definitions": "[{\"type\": \"function\", \"name\": \"price_support_pilot\", \"description\": \"Compute the pilot cost without accepting any work.\", \"parameters\": {\"properties\": {}, \"title\": \"price_support_pilot_input\", \"type\": \"object\"}}]",
+          "gen_ai.provider.name": "microsoft.agent_framework",
+          "gen_ai.response.finish_reasons": "[\"stop\"]"
+        }
+      }
+    ],
+    "response": "Pilot costed; human approval is still required.",
+    "trace_destination": "memory",
+    "exported": false,
+    "metrics": [
+      "gen_ai.client.operation.duration",
+      "gen_ai.client.token.usage",
+      "agent_framework.function.invocation.duration"
+    ],
+    "usage": null,
+    "metrics_note": "The SDK defines these instruments. This demo captures spans; the scripted provider reports no token counts.",
+    "sensitive_data": "ENABLE_SENSITIVE_DATA records prompts, responses and tool arguments. Keep it off outside development; it is forced off for this capture.",
+    "isolation": "A fresh process prevents ambient exporters or repeated provider configuration from leaking into ordinary commands."
+  },
+  "workflow": {
+    "mode": "local_execution",
+    "status": "ok",
+    "headline": "The typed workflow resumed and accepted the approved pilot.",
+    "graph": "flowchart TD\n  draft[\"draft (Start)\"];\n  review[\"review\"];\n  approve[\"approve\"];\n  revise[\"revise\"];\n  accept[\"accept\"];\n  draft --> review;\n  review --> approve;\n  review --> revise;\n  approve --> accept;\n  revise --> accept;",
+    "graph_format": "mermaid",
+    "proposal": {
+      "text": "Pilot scope: readiness, one agent and one tool, retrieval, approval, telemetry and evaluation.",
+      "cost": {
+        "weeks": 6,
+        "staffing": {
+          "solution-architect": 7200,
+          "python-engineer": 11400
+        },
+        "staffing_total": 18600,
+        "platform_total": 1080,
+        "total": 19680,
+        "budget": 25000,
+        "within_budget": true,
+        "headroom": 5320
+      },
+      "cited_sources": [
+        "agent-framework-overview"
+      ],
+      "revised": false,
+      "approved": true,
+      "decided_by": "workshop-operator"
+    },
+    "paused_for_approval": true,
+    "outputs_before_approval": 0,
+    "request_id": "support-pilot-approval",
+    "checkpoint_id": "537e4243-7386-4f43-b674-ccf23de9f371",
+    "checkpoint_count": 4,
+    "storage": "InMemoryCheckpointStorage",
+    "restored": true,
+    "accepted": true,
+    "decision_source": "classroom operator decision replay",
+    "usage": null,
+    "failures": [],
+    "outputs_after_resume": 1
+  },
+  "azure-identity": {
+    "mode": "live_identity",
+    "status": "ok",
+    "headline": "Authentication and resource authorization are separate checks.",
+    "scenario": "Contoso wants a six-week customer-support agent pilot. Budget is an illustrative 25,000 USD. Azure resources and permissions are not provisioned yet. A named human must approve the proposal before any work is accepted.",
+    "cost": {
+      "weeks": 6,
+      "staffing": {
+        "solution-architect": 7200,
+        "python-engineer": 11400
+      },
+      "staffing_total": 18600,
+      "platform_total": 1080,
+      "total": 19680,
+      "budget": 25000,
+      "within_budget": true,
+      "headroom": 5320
+    },
+    "credential": "EnvironmentCredential",
+    "configuration_names": [
+      "AZURE_TENANT_ID",
+      "AZURE_CLIENT_ID",
+      "AZURE_CLIENT_SECRET"
+    ],
+    "principal_kind": "ordinary application service principal",
+    "is_agent_id": false,
+    "tokens": [
+      {
+        "scope": "https://ai.azure.com/.default",
+        "acquired": true,
+        "aud": "https://ai.azure.com",
+        "expires_at": "2026-09-14T15:25:09+00:00",
+        "roles": null,
+        "error": null
+      },
+      {
+        "scope": "https://cognitiveservices.azure.com/.default",
+        "acquired": true,
+        "aud": "https://cognitiveservices.azure.com",
+        "expires_at": "2026-09-14T15:25:10+00:00",
+        "roles": null,
+        "error": null
+      },
+      {
+        "scope": "https://search.azure.com/.default",
+        "acquired": true,
+        "aud": "https://search.azure.com",
+        "expires_at": "2026-09-14T15:25:10+00:00",
+        "roles": null,
+        "error": null
+      },
+      {
+        "scope": "https://management.azure.com/.default",
+        "acquired": true,
+        "aud": "https://management.azure.com",
+        "expires_at": "2026-09-14T15:25:10+00:00",
+        "roles": null,
+        "error": null
+      }
+    ],
+    "claims_verification": "Decoded without verification; display only.",
+    "arm": {
+      "method": "GET",
+      "url": "https://management.azure.com/subscriptions?api-version=2022-12-01",
+      "subscriptions": [],
+      "empty_list_observed": true,
+      "error": null
+    },
+    "lesson": "A token proves authentication. Azure RBAC decides resource access. An empty ARM list means no subscriptions visible to this principal; it does not list all role assignments. JWT roles are app roles, not an inventory of Azure RBAC roles.",
+    "offline": "Offline requests no tokens; acquired=null means unrequested. Use --execution live to observe the real subscription list."
+  }
+}

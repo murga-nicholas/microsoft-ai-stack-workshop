@@ -1,0 +1,199 @@
+[project]
+name = "microsoft-ai-stack-workshop"
+version = "0.1.0"
+description = "A runnable tour of the Microsoft AI stack: Agent Framework, Microsoft Foundry, and the legacy lane it replaces."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    # --- Current lane: Microsoft Agent Framework ---------------------------
+    "agent-framework-core>=1.18,<2",
+    "agent-framework-openai>=1.14,<2",
+    "agent-framework-anthropic>=1.0.0b260910",
+    "agent-framework-foundry>=1.13,<2",
+    "agent-framework-orchestrations>=1.1.1,<2",
+    # --- Current lane: Microsoft Foundry and Azure AI ----------------------
+    "azure-ai-evaluation>=1.18,<2",
+    "azure-ai-projects>=2.6,<3",
+    "azure-identity>=1.19,<2",
+    "azure-search-documents>=12,<13",
+    "foundry-local-sdk>=2,<3",
+    # --- Shared ------------------------------------------------------------
+    # Microsoft's observability page says the OpenTelemetry SDK is installed
+    # by default, but agent-framework-core 1.18 only requires the API. The
+    # otel demo needs the SDK's in-memory exporter, so it is explicit here.
+    "opentelemetry-sdk>=1.39,<2",
+    "pydantic>=2.12,<3",
+    "rich>=14,<15",
+]
+
+[project.scripts]
+msai-demo = "msai_demo.cli:main"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18,<2",
+    "pytest>=8.4,<10",
+    "pytest-cov>=7,<8",
+    "ruff>=0.12,<1",
+]
+# AutoGen is the legacy multi-agent lane. It still resolves against the
+# current stack, so `uv sync --group legacy` gives you both frameworks in one
+# environment and the side-by-side group-chat demo runs end to end.
+legacy = [
+    "autogen-agentchat>=0.7.5,<0.8",
+    "autogen-ext[openai]>=0.7.5,<0.8",
+]
+# Building the deck needs python-pptx; running the demos does not.
+deck = [
+    "python-pptx>=1,<2",
+]
+# Observability exporters are optional: nothing in this repo sends telemetry
+# unless you ask for it.
+otel = [
+    "opentelemetry-exporter-otlp-proto-grpc>=1.30,<2",
+]
+
+# Two more packages are deliberately absent, for the same reason:
+#   * agent-framework-foundry-local pins foundry-local-sdk>=0.5.1,<0.5.2
+#     while the current foundry-local-sdk is 2.0.1. `msai-demo
+#     foundry-local` therefore drives Foundry Local through its
+#     OpenAI-compatible endpoint, which is the documented path.
+#   * Semantic Kernel is deliberately NOT a dependency group. It pins
+# `azure-ai-projects>=1.0,<2.5` while the current Foundry SDK is 2.6, so the
+# two cannot share a lockfile. `msai-demo semantic-kernel` explains this and
+# prints the exact command that runs it in an isolated environment.
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/msai_demo"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"data/microsoft_ai_stack_notes.md" = "msai_demo/data/microsoft_ai_stack_notes.md"
+
+[tool.pytest.ini_options]
+# --basetemp keeps tmp_path inside the repository. The default
+# lives under the user's TEMP, which any sandboxed tool on the
+# machine can make unreadable; a project-local root keeps the
+# suite hermetic and reproducible on a shared build agent.
+addopts = "-q --strict-config --strict-markers --basetemp=.pytest_tmp"
+testpaths = ["tests"]
+xfail_strict = true
+
+[tool.coverage.run]
+branch = true
+source = ["msai_demo"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_covered = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+    'if __name__ == "__main__":',
+]
+
+[tool.ruff]
+extend-exclude = [".msai_workspace", ".uv-cache"]
+line-length = 79
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "A",
+    "ANN",
+    "ARG",
+    "B",
+    "C4",
+    "D",
+    "DTZ",
+    "E",
+    "EM",
+    "F",
+    "I",
+    "ICN",
+    "LOG",
+    "N",
+    "PERF",
+    "PIE",
+    "PLC",
+    "PLE",
+    "PLW",
+    "PTH",
+    "RET",
+    "RSE",
+    "S",
+    "SIM",
+    "T10",
+    "TC",
+    "TRY",
+    "UP",
+    "W",
+    "RUF",
+]
+ignore = [
+    # SDK payloads and model responses are intentionally dynamic.
+    "ANN401",
+    # Optional SDKs are imported inside functions so a missing package is a
+    # reported mode, not an ImportError at startup.
+    "PLC0415",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# The deck builder is a layout DSL: `import theme as T` and
+# `import components as C` read like the design system they are.
+"deck/**" = ["N812"]
+"tests/**" = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D107",
+    "S101",
+    "SLF001",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 72
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+# The package supports 3.11+, but mypy is run at 3.12 because numpy
+# (pulled in transitively by the OpenAI and Anthropic SDKs) ships
+# stubs that use 3.12 `type` statements, and a stub syntax error
+# cannot be suppressed. Ruff's target-version = py311 is what
+# actually guarantees this code stays 3.11-compatible.
+python_version = "3.12"
+mypy_path = "src"
+files = ["src/msai_demo"]
+strict = true
+exclude = ["^\\.venv/", "^\\.msai_workspace/"]
+pretty = true
+show_error_codes = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+# numpy is only ever a transitive import here; nothing in this repo
+# uses it, so do not spend time type-checking through it.
+module = ["numpy", "numpy.*", "openai._extras.*"]
+follow_imports = "skip"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+# Optional SDKs are imported lazily and may be absent from the dev
+# environment; their own type coverage is not this project's contract.
+module = ["foundry_local_sdk.*"]
+ignore_missing_imports = true
+
+[tool.uv]
+default-groups = ["dev"]
